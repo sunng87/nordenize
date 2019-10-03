@@ -4,8 +4,19 @@ type HSL_DISTANCE_FN = (c1: HSL, c2: HSL) => number;
 
 // create a function for calc weighted hsl distance between two hsl color value
 // FIXME: when L is out of certain scope, h and s doesn't mean anything
-export let weightedHslDistanceFn = (weight: VEC3) => (hsl1: HSL, hsl2: HSL) =>
-    [1, 2, 3].map(i => Math.abs(hsl1[i] - hsl2[i]) * weight[i]).reduce((itm, acc) => acc + itm);
+// HUE range 0-360
+export let weightedHslDistanceFn = (weight: VEC3) => (hsl1: HSL, hsl2: HSL) => {
+    let hueWeight = weight[0] / 3.6;
+    if (hsl1[2] > 80) {
+        hueWeight = 0;
+    }
+
+    let hDist = Math.min(Math.abs(hsl1[0] - hsl2[0]), Math.abs(hsl1[0] - (hsl2[0] - 360))) * hueWeight;
+    let sDist = Math.abs(hsl1[1] - hsl2[1]) * weight[1];
+    let lDist = Math.abs(hsl1[2] - hsl2[2]) * weight[2];
+
+    return hDist + sDist + lDist;
+};
 
 export let findBestMatchColor = (givenColor: HSL, presetColors: HSL[], distanceFn: HSL_DISTANCE_FN) => {
     let min: number = Infinity;
