@@ -11,9 +11,9 @@ export let weightedHslDistanceFn = (weight: VEC3) => (hsl1: HSL, hsl2: HSL) => {
         hueWeight = 0;
     }
 
-    let hDist = Math.min(Math.abs(hsl1[0] - hsl2[0]), Math.abs(hsl1[0] - (hsl2[0] - 360))) * hueWeight;
-    let sDist = Math.abs(hsl1[1] - hsl2[1]) * weight[1];
-    let lDist = Math.abs(hsl1[2] - hsl2[2]) * weight[2];
+    const hDist = Math.min(Math.abs(hsl1[0] - hsl2[0]), Math.abs(hsl1[0] - (hsl2[0] - 360))) * hueWeight;
+    const sDist = Math.abs(hsl1[1] - hsl2[1]) * weight[1];
+    const lDist = Math.abs(hsl1[2] - hsl2[2]) * weight[2];
 
     return hDist + sDist + lDist;
 };
