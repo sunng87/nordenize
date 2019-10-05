@@ -9,4 +9,7 @@ test('findBestMatchcolor', () => {
 
     let white = colorConvert.hex.hsl('#FFFFFF');
     expect(findBestMatchColor(white, colorsHsl, distFn)).toStrictEqual(colorConvert.hex.hsl(palettes['Snow Storm'][2]));
+
+    let darkgray = colorConvert.hex.hsl('#101010');
+    expect(findBestMatchColor(darkgray, colorsHsl, distFn)).toStrictEqual(colorConvert.hex.hsl(palettes['Polar Night'][0]));
 });

@@ -7,7 +7,7 @@ type HSL_DISTANCE_FN = (c1: HSL, c2: HSL) => number;
 // HUE range 0-360
 export let weightedHslDistanceFn = (weight: VEC3) => (hsl1: HSL, hsl2: HSL) => {
     let hueWeight = weight[0] / 3.6;
-    if (hsl1[2] > 80) {
+    if (hsl1[2] > 80 || hsl1[2] < 20) {
         hueWeight = 0;
     }
 
