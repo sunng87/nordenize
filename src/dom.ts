@@ -22,4 +22,4 @@ export const mapStyleColorRules = (fn: COLOR_MAP_FN) => {
             }
         });
     });
-}
+};
