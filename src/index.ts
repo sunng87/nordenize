@@ -1,10 +1,11 @@
-import * as nord from './nord';
-import { mapStyleColorRules } from './dom';
-import * as transform from './transformer';
 import * as colorConvert from 'color-convert';
+import { mapStyleColorRules } from './dom';
+import * as nord from './nord';
+import * as transform from './transformer';
+
 
 export class Nordenize {
-    transform() {
+    public transform() {
         const distFn = transform.weightedHslDistanceFn([3, 0.5, 2]);
 
         mapStyleColorRules(color => {
@@ -14,7 +15,7 @@ export class Nordenize {
         });
     }
 
-    setup() {
+    public setup() {
         window.addEventListener('DOMContentLoaded', event => {
             this.transform();
         });

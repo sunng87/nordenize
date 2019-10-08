@@ -2,9 +2,9 @@ type COLOR_MAP_FN = (color: string) => string;
 
 export const mapStyleColorRules = (fn: COLOR_MAP_FN) => {
     Array.from(document.styleSheets).forEach((sheet: StyleSheet) => {
-        let cssSheet = sheet as CSSStyleSheet;
+        const cssSheet = sheet as CSSStyleSheet;
         Array.from(cssSheet.cssRules).forEach((rule: CSSRule) => {
-            let cssRule = rule as CSSStyleRule;
+            const cssRule = rule as CSSStyleRule;
 
             // color
             if (cssRule.style.color) {
