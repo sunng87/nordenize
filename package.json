@@ -8,7 +8,7 @@
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
-    "browserify": "browserify src/index.ts -p [ tsify --noImplicitAny --global] > nordenize.js"
+    "browserify": "browserify src/index.ts -p [ tsify --noImplicitAny] -o dist/nordenize.js"
   },
   "files": [
     "lib/**/*"
