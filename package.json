@@ -2,13 +2,13 @@
   "name": "nordenize",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "jest --config jestconfig.json",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
-    "dist": "browserify src/index.ts -p [ tsify --noImplicitAny] -o dist/nordenize.js"
+    "dist": "browserify src/index.ts -p [ tsify --noImplicitAny] --s nordenize -o dist/nordenize.js",
+    "dist.min": "browserify src/index.ts -p [ tsify --noImplicitAny] -p tinyify --s nordenize -o dist/nordenize.min.js"
   },
   "files": [
     "lib/**/*"
@@ -21,6 +21,7 @@
     "browserify": "^16.5.0",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
+    "tinyify": "^2.5.1",
     "ts-jest": "^24.1.0",
     "tsify": "^4.0.1",
     "tslint": "^5.20.0",
